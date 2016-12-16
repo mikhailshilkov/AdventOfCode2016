@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Utils.fs" />
-    <Compile Include="Day1a.fs" />
+    <Compile Include="Day1.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
   </ItemGroup>

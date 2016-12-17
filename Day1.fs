@@ -89,9 +89,9 @@ type private DirectionCommand = {
   Steps: int
 }
 
-let private toDirectional facing command =
-  let newFacing = takeTurn facing command.Turn
-  { Direction = newFacing; Steps = command.Steps }, newFacing
+let private toDirectional previous command =
+  let newFacing = takeTurn previous.Direction command.Turn
+  { Direction = newFacing; Steps = command.Steps }
 
 let private toDeltas command =
   [1..command.Steps]
@@ -100,16 +100,10 @@ let private toDeltas command =
 let distanceToFirstDuplicateLocation (path: string) : int =
   let moves = 
     parseCommands path
-    |> List.mapFold toDirectional North 
-    |> fst
+    |> List.scan toDirectional { Direction = North; Steps = 0 }
     |> List.collect toDeltas
 
-  let allPositions = 
-    moves 
-    |> List.mapFold (fun position move -> 
-      let newPosition = move position
-      newPosition, newPosition) { X = 0; Y = 0 }
-    |> fst
+  let allPositions = moves |> List.scan (|>) { X = 0; Y = 0 }
 
   allPositions 
   |> Seq.countBy id 

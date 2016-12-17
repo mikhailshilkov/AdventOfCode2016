@@ -43,9 +43,7 @@ let private parseCommand (c: string) =
   | _ -> None
 
 let private parseCommands (path: string) = 
-  path.Split(',') 
-  |> List.ofArray 
-  |> List.map (fun x -> x.Trim()) 
+  splitStringBy path ","
   |> List.filter (fun x -> x <> "")
   |> List.choose parseCommand
 

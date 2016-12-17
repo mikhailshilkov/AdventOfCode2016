@@ -29,8 +29,9 @@
 /// 
 /// Your puzzle input is the instructions from the document you found at the front desk. What is the 
 /// bathroom code?
-
 module Day2
+
+open Utils
 
 type private Key = | One | Two | Three | Four | Five | Six | Seven | Eight | Nine
 type private Command = | Up | Down | Left | Right
@@ -87,8 +88,7 @@ let private parseCommands (s: string) =
 let private navigate m p moves = moves |> List.fold m p
 
 let private getCode move print start (moves: string): string =
-  moves.Split('\n') 
-  |> List.ofArray 
+  splitStringBy moves "\n"
   |> List.map parseCommands
   |> List.scan (navigate move) start
   |> List.tail

@@ -9,3 +9,8 @@ let parseInt (s: string) =
   match s with
   | Int i -> Some i
   | _ -> None
+
+let splitStringBy (s: string) (separator: string) = 
+  s.Split([|separator|], System.StringSplitOptions.RemoveEmptyEntries) 
+  |> List.ofArray
+  |> List.map (fun x -> x.Trim())  

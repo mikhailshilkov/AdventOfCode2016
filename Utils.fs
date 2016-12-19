@@ -10,7 +10,9 @@ let parseInt (s: string) =
   | Int i -> Some i
   | _ -> None
 
-let splitStringBy (s: string) (separator: string) = 
-  s.Split([|separator|], System.StringSplitOptions.RemoveEmptyEntries) 
+let splitStringByMany (separators: string list) (s: string) = 
+  s.Split(separators |> Array.ofList, System.StringSplitOptions.RemoveEmptyEntries) 
   |> List.ofArray
   |> List.map (fun x -> x.Trim())  
+
+let splitStringBy (separator: string) = splitStringByMany [separator]

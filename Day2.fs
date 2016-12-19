@@ -88,7 +88,8 @@ let private parseCommands (s: string) =
 let private navigate m p moves = moves |> List.fold m p
 
 let private getCode move print start (moves: string): string =
-  splitStringBy moves "\n"
+  moves
+  |> splitStringBy  "\n"
   |> List.map parseCommands
   |> List.scan (navigate move) start
   |> List.tail

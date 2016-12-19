@@ -43,7 +43,8 @@ let private parseCommand (c: string) =
   | _ -> None
 
 let private parseCommands (path: string) = 
-  splitStringBy path ","
+  path
+  |> splitStringBy ","
   |> List.filter (fun x -> x <> "")
   |> List.choose parseCommand
 

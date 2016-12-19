@@ -9,8 +9,8 @@ module Day3
 
 open Utils
 
-let private parseTriangle (s: string) =
-  match splitStringBy s " " with
+let private parseTriangle s =
+  match splitStringBy " " s with
   | [Int a; Int b; Int c] -> Some [a; b; c]
   | _ -> None
 
@@ -18,8 +18,9 @@ let private isValid (items: int list) =
   let sum = List.sum items 
   items |> List.forall (fun i -> sum - i > i)
 
-let validTriangleCount (lines: string) =
-  splitStringBy lines "\n" 
+let validTriangleCount lines =
+  lines
+  |> splitStringBy "\n" 
   |> List.choose parseTriangle
   |> List.filter isValid
   |> List.length
@@ -39,9 +40,10 @@ let validTriangleCount (lines: string) =
 /// In your puzzle input, and instead reading by columns, how many of the listed 
 /// triangles are possible?
 
-let validTriangleByColumnsCount (lines: string) =
+let validTriangleByColumnsCount lines =
   let rows = 
-    splitStringBy lines "\n"
+    lines
+    |> splitStringBy "\n"
     |> List.choose parseTriangle
 
   [0..2]

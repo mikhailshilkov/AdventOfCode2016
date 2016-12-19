@@ -1,5 +1,5 @@
 ﻿let dayData x = System.IO.File.ReadAllText (sprintf "..\..\Data\%i.txt" x)
-let data = "" :: ([1..3] |> List.map dayData)
+let data = "" :: ([1..4] |> List.map dayData)
 
 [<EntryPoint>]
 let main argv = 
@@ -19,6 +19,11 @@ let main argv =
     printfn "Day 3A: %i" day3a
     let day3b = Day3.validTriangleByColumnsCount data.[3]
     printfn "Day 3B: %i" day3b
+
+    let day4a = Day4.sumOfSectorIds data.[4]
+    printfn "Day 4A: %i" day4a
+    let day4b = Day4.lookupSectorID data.[4] "northpole"
+    printfn "Day 4B: %O" day4b
 
     System.Console.ReadKey() |> ignore
     0 // return an integer exit code

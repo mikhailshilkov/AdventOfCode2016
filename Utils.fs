@@ -16,3 +16,5 @@ let splitStringByMany (separators: string list) (s: string) =
   |> List.map (fun x -> x.Trim())  
 
 let splitStringBy (separator: string) = splitStringByMany [separator]
+
+let toString (chars: char seq) = new string(chars |> Array.ofSeq)

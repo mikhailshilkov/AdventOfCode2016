@@ -25,5 +25,10 @@ let main argv =
     let day4b = Day4.lookupSectorID data.[4] "northpole"
     printfn "Day 4B: %O" day4b
 
+    let day5a = "too slow to run every time..." //Day5.getPassword1 "ffykfhsq"
+    printfn "Day 5A: %s" day5a
+    let day5b = "too slow to run every time..." //Day5.getPassword2' "ffykfhsq"
+    printfn "Day 5B: %s" day5b
+
     System.Console.ReadKey() |> ignore
     0 // return an integer exit code

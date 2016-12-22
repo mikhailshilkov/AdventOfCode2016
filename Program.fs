@@ -1,5 +1,9 @@
-﻿let dayData x = System.IO.File.ReadAllText (sprintf "..\..\Data\%i.txt" x)
-let data = "" :: ([1..4] |> List.map dayData)
+﻿open System.IO
+
+let dayData x = 
+  let filename = sprintf "..\..\Data\%i.txt" x
+  if File.Exists filename then File.ReadAllText filename else ""
+let data = "" :: ([1..6] |> List.map dayData)
 
 [<EntryPoint>]
 let main argv = 
@@ -29,6 +33,11 @@ let main argv =
     printfn "Day 5A: %s" day5a
     let day5b = "too slow to run every time..." //Day5.getPassword2' "ffykfhsq"
     printfn "Day 5B: %s" day5b
+
+    let day6a = Day6.readMostPopular data.[6]
+    printfn "Day 6A: %s" day6a
+    let day6b = Day6.readLeastPopular data.[6]
+    printfn "Day 6B: %s" day6b
 
     System.Console.ReadKey() |> ignore
     0 // return an integer exit code

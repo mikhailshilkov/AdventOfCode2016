@@ -25,9 +25,9 @@ open System.Security.Cryptography
 open System.Text
 open Utils
 
-let md5hasher = MD5.Create()
+let private md5hasher = MD5.Create()
 
-let md5 (input: string) : string =
+let private md5 (input: string) : string =
   input
   |> System.Text.Encoding.ASCII.GetBytes
   |> md5hasher.ComputeHash

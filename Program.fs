@@ -3,7 +3,7 @@
 let dayData x = 
   let filename = sprintf "..\..\Data\%i.txt" x
   if File.Exists filename then File.ReadAllText filename else ""
-let data = "" :: ([1..6] |> List.map dayData)
+let data = "" :: ([1..26] |> List.map dayData)
 
 [<EntryPoint>]
 let main argv = 
@@ -38,6 +38,9 @@ let main argv =
     printfn "Day 6A: %s" day6a
     let day6b = Day6.readLeastPopular data.[6]
     printfn "Day 6B: %s" day6b
+
+    let day7a = Day7.countIPs data.[7]//"abba[mnop]qrst\nabcd[bddb]xyyx\naaaa[qwer]tyui\nioxxoj[asdfgh]zxcvbn"
+    printfn "Day 7A: %i" day7a
 
     System.Console.ReadKey() |> ignore
     0 // return an integer exit code

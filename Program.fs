@@ -44,5 +44,11 @@ let main argv =
     let day7b = Day7.countSSL data.[7]
     printfn "Day 7B: %i" day7b
 
+    let day8a = Day8.countLitPixels data.[8]
+    printfn "Day 8A: %i" day8a
+    let day8b = Day8.printCode data.[8] 
+    printfn "Day 8B:"
+    day8b |> List.iter (printfn "%s")
+
     System.Console.ReadKey() |> ignore
     0 // return an integer exit code

@@ -39,8 +39,10 @@ let main argv =
     let day6b = Day6.readLeastPopular data.[6]
     printfn "Day 6B: %s" day6b
 
-    let day7a = Day7.countIPs data.[7]//"abba[mnop]qrst\nabcd[bddb]xyyx\naaaa[qwer]tyui\nioxxoj[asdfgh]zxcvbn"
+    let day7a = Day7.countTLS data.[7]
     printfn "Day 7A: %i" day7a
+    let day7b = Day7.countSSL data.[7]
+    printfn "Day 7B: %i" day7b
 
     System.Console.ReadKey() |> ignore
     0 // return an integer exit code

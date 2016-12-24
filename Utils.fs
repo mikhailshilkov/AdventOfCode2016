@@ -18,3 +18,9 @@ let splitStringByMany (separators: string list) (s: string) =
 let splitStringBy (separator: string) = splitStringByMany [separator]
 
 let toString (chars: char seq) = new string(chars |> Array.ofSeq)
+
+let partitioni f list =
+  list
+  |> List.mapi (fun i x -> i, x)
+  |> List.partition f
+  |> fun (l1, l2) -> l1 |> List.map snd, l2 |> List.map snd

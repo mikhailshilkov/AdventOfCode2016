@@ -44,14 +44,6 @@ type private Instruction =
   | RotateRow of index: int * by: int
   | RotateColumn of index: int * by: int
 
-let private (|TwoIntegers|_|) (prefix:string) (mid:string) (s:string) =
-  if s.StartsWith(prefix) then
-    let parts = splitStringBy mid (s.Substring(prefix.Length))
-    match parts with
-    | [Int i1; Int i2] -> Some (i1, i2)
-    | _ -> None
-  else None
-
 let private parseInstruction = function
   | TwoIntegers "rect " "x" v-> Rect v |> Some
   | TwoIntegers "rotate row y=" " by " v -> RotateRow v |> Some

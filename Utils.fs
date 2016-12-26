@@ -17,6 +17,14 @@ let splitStringByMany (separators: string list) (s: string) =
 
 let splitStringBy (separator: string) = splitStringByMany [separator]
 
+let (|TwoIntegers|_|) (prefix:string) (mid:string) (s:string) =
+  if s.StartsWith(prefix) then
+    let parts = splitStringBy mid (s.Substring(prefix.Length))
+    match parts with
+    | [Int i1; Int i2] -> Some (i1, i2)
+    | _ -> None
+  else None
+
 let toString (chars: char seq) = new string(chars |> Array.ofSeq)
 
 let partitioni f list =

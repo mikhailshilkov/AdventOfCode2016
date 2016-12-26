@@ -50,5 +50,10 @@ let main argv =
     printfn "Day 8B:"
     day8b |> List.iter (printfn "%s")
 
+    let day9a = Day9.decompress1 data.[9]
+    printfn "Day 9A: %i" day9a
+    let day9b = Day9.decompress2 data.[9]
+    printfn "Day 9B: %i" day9b
+
     System.Console.ReadKey() |> ignore
     0 // return an integer exit code

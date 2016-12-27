@@ -42,8 +42,7 @@ let private (|CompressedBlock|_|) chars =
     | _ -> None
   | _ -> None
 
-let rec private decompressChars acc chars =
-  match chars with
+let rec private decompressChars acc = function
   | [] -> acc
   | t :: rem when Char.IsWhiteSpace t -> decompressChars acc rem
   | CompressedBlock (len, times, rem) ->
@@ -63,8 +62,7 @@ let decompress1 = decompress decompressChars
 /// provides much more substantial compression capabilities, allowing 
 /// many-gigabyte files to be stored in only a few kilobytes.
 
-let rec private decompressChars2 acc chars =
-  match chars with
+let rec private decompressChars2 acc = function
   | [] -> acc
   | t :: rem when Char.IsWhiteSpace t -> decompressChars2 acc rem
   | CompressedBlock (len, times, rem) ->

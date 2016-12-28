@@ -55,5 +55,10 @@ let main argv =
     let day9b = Day9.decompress2 data.[9]
     printfn "Day 9B: %i" day9b
 
+    let day10a = Day10.findBot 61 17 data.[10]
+    printfn "Day 10a: %i" day10a
+    let day10b = Day10.productOfOutput123 data.[10]
+    printfn "Day 10b: %i" day10b
+
     System.Console.ReadKey() |> ignore
     0 // return an integer exit code

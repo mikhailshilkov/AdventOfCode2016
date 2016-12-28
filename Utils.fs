@@ -34,6 +34,7 @@ let (|ThreeIntegers|_|) (prefix:string) (mid1:string) (mid2:string) (s:string) =
   else None
 
 let toString (chars: char seq) = new string(chars |> Array.ofSeq)
+let join separator (strings: string list) = System.String.Join(separator, strings)
 
 let partitioni f list =
   list

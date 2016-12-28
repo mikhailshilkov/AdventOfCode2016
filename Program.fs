@@ -60,5 +60,10 @@ let main argv =
     let day10b = Day10.productOfOutput123 data.[10]
     printfn "Day 10b: %i" day10b
 
+    let day11a = "too slow to run every time..." //Day11.countOfSteps Day11.floors1 |> string
+    printfn "Day 11a: %s" day11a
+    let day11b = "too slow to run every time..." //Day11.countOfSteps Day11.floors2 |> string
+    printfn "Day 11b: %s" day11b
+
     System.Console.ReadKey() |> ignore
     0 // return an integer exit code
